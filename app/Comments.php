@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Tweets extends Model
+class Comments extends Model
 {
     //
 }

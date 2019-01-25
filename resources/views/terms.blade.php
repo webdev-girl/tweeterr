@@ -11,3 +11,7 @@
 @section('legend')
     This is what it is
 @endsection
+
+@php
+//var_dump('here');
+@endphp

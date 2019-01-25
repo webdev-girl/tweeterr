@@ -1,6 +1,4 @@
 
-
-<!DOCTYPE html>
 <html lang="en" dir="ltr">
 @include('partials.header')
     <body>
@@ -15,31 +13,27 @@
         </div>
         <div class="container">
                 <div class="row">
-                    <form method="$_POST" action="/posts" id="posts">
-                        <div class="col-sm">
-                            <h1>Tweets</h1>
-                        </div>
+                    <div class="col-sm">
+                        <h1>Tweets</h1>
+                    <form method="POST" action="/posts">
+                        @csrf
+                    <div class="col-sm">
 
-                        
+                        @foreach ($tweets as $singletweet)
+                            <a href="/posts/{{$singletweet}}">
+                            {{$singletweet->tweet}} </a>
+                            - by {{$singletweet->user_id}}
+                            <br/>
 
-                        <div class="col-sm">
-                        <br/>
-                        </div>
-
-                        <br/>
-                        <br/>
-                        <div class="col-sm-2">
-                            <textarea name="tweet" placeholder="Whats happening?" rows="5" cols="40"></textarea>
-                        </div>
-                        <br/>
-                        <br/>
-                        <br/>
-                        <br/>
+                        @endforeach
+                        <input type="hidden" name="user_id" value="{{$singletweet->user_id}}">
+                        <input type="hidden" name="tweets_id" value="{{$singletweet->tweets_id}}">
+                    </div>
                         <div>
                             <input type="submit" name="submit" value="Tweet">
                         </div>
                 </form>
             </div>
-    @include('partials.footer')
+        @include('partials.footer')
     </body>
 </html>
