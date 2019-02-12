@@ -10,53 +10,32 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-//Route::get('blade', function () {
-//    return view('child');
-//});
-
-Route::get('/layout', function () {
-        return view('layout');
+Route::get('blade', function () {
+   return view('child');
 });
 
-Route::get('/', function () {
-   return view('welcome');
-});
+ Route::get('/welcome', function () {
+    return view('welcome');
+ });
 
-Route::get('/about', 'PagesController@about');
-Route::get('/index', 'PagesController@index');
-Route::get('/timeline', 'PagesController@timeline');
-Route::get('/contact', 'PagesController@contact');
-Route::get('/terms', 'PagesController@terms');
+ Route::get('/index', function () {
+    return view('index');
+ });
 
-Route::get('/login', function () {
-        return view('login');
-});
+ Route::get('/layout', function () {
+    return view('layout');
+ });
 
-Route::get('/home', function () {
-        return view('home');
-});
+ Route::auth();
+ Route::get('/home', 'HomeController@index');
 
-Route::get('/posts', 'PostsController@index');
-Route::get('/posts/{tweets}', 'PostsController@show');
-Route::post('/posts/create', 'PostsController@create');
-
-//Route::get('/posts', 'PostsController@comments');
-//Route::get('/posts', 'PostsController@tweets');
-Route::post('/posts/store', 'PostsController@store');
-Route::post('/posts/store', 'PostsController@user');
-
-Route::get('/home', 'UserController@home');
-Route::get('/user', 'UserController@index');
-Route::get('/user/{user_id}', 'UserController@getOtherUser');
+ Route::get('/timeline', 'PostsController@index');
+ Route::post('/timeline', 'PostsController@savetweet');
+ //Route::post('/timeline', 'PostsController@postcomment');
+ //Route::get('/timeline', 'PostsController@delete');
 
 
-Route::get('/user/{user}', 'UserController@index');
-Route::get('/tasks/{tasks}', 'TasksController@index');
-
-Route::get('/search', function () {
-        return view('search');
-});
-
-Route::get('/signup', function () {
-        return view('signup');
+Route::get('/logout', function () {
+     Auth::logout;
+     return redirect('/');
 });

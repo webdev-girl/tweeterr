@@ -14,9 +14,8 @@ class CreateTweetsLikesTable extends Migration
     public function up()
     {
         Schema::create('tweets_likes', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('user_id')->unsigned()->index();
-            $table->integer('tweet_id')->unsigned()->index();
+            $table->increments('user_id')->unsigned()->index();
+            $table->integer('tweets_id')->unsigned()->index();
             $table->integer('likes')->unsigned();
             $table->timestamps();
         });

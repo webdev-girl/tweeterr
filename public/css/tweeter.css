@@ -6,23 +6,22 @@ html {
 }
 
 .login-bg {
-    background-repeat: no-repeat center center fixed;
-    background-position: center;
-    background: cover;
-    background-color: #e6ecf0;
+    background: #e6ecf0;
+    color: #14171a;
+    font-size: 14px;
+    line-height: 20px;
+    overflow-y: scroll;
     font-family: "Segoe UI",Arial,sans-serif;
     border: 1px;
     width: 100%;
     height: 100%;
-    color: #14171a;
-    font-size: 14px;
-    line-height: 20px;
 }
 
 .about-bg {
-    background-color: #1da1f2;
+    background-color: #1da1f3;
 
 }
+
 .timeline-bg{
     background-color: #e6ecf0;
 }
@@ -42,6 +41,12 @@ ul{
     overflow: hidden;
 }
 
+li{
+    float: left;
+    margin-left: 3px;
+    padding: 0;
+}
+
 li a {
       display: block;
       color: white;
@@ -50,13 +55,26 @@ li a {
       text-decoration: none;
       float: left;
       color: #1da1f2;
-      text-decoration: none;
-      font-size: 17px;
+
       border: none;
       border-bottom: 3px solid transparent;
+      color: inherit;
+      display: block;
+      font-size: 13px;
+
+      /*font-weight: bold;
+      height: 46px;
+      line-height: 1;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #212529;
+      text-align: left;
+      background-color: #fff;*/
 }
 
 /*Index*/
+
 .index-icon-text{
     font-size: 35px;
     margin-right: 16px;
@@ -148,8 +166,25 @@ a.index-signup-button{
   text-align: center;
   margin-right: 20px;
 
- }
 
+
+ }
+ a.index-login-button{
+      background-color: white;
+      font-size: 14px;
+      color: #1da1f2;
+      display: inline-block;
+      text-decoration: none;
+      border-radius: 20px;
+      width: 350px;
+      height: 34px;
+      text-align: center;
+      border: 2px;
+      border-style: solid;
+      border-color:#1da1f2;
+      margin-top: 2px;
+      margin-right: 20px;
+}
 
 
  a.index-login-button{
@@ -178,14 +213,33 @@ a:hover {
 div.h1{
     font-size: 24px;
     line-height: .8;
+
 }
 
-.topnav {
+.login-topnav{
   overflow: hidden;
   background-color: white;
   text-decoration: none;
-  border: 3px solid #1da1f2;
+  border: 1px solid #ccc;
+  border-left: none;
+  width: 100%;
+  height: 46px;
+}
 
+.login-li{
+    color: #66757f;
+}
+
+.fa-twitter{
+    color: #1da1f2;
+    padding-right: 2px;
+}
+
+.login-a{
+    color: inherit;
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
 }
 
 a:hover {
@@ -197,6 +251,15 @@ a:hover {
 
 .language-select{
     float: right;
+}
+
+.login-background{
+    text-align: center;
+    background-color: white;
+    background-repeat: no-repeat center center fixed;
+    background-position: center;
+    background: cover;
+    border: 1px solid rgba(0,0,0,0.1);
 }
 
 .login-button{
@@ -215,87 +278,324 @@ a:hover {
     color: #fff;
     color: white;
     display: inline-block;
-
-
 }
 
-::selection {
-    background-color: #b3d4fc;
-    color: #000;
-    text-shadow: none;
+
+/*signup*/
+
+.card-body{
+    width: 600px;
+    height: 400px;
 }
 
-/* The Overlay (background) */
-.overlay {
-  /* Height & width depends on how you want to reveal the overlay (see JS below) */
-  height: 100%;
-  width: 0;
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  background-color: rgb(0,0,0); /* Black fallback color */
-  background-color: rgba(0,0,0, 0.9); /* Black w/opacity */
-  overflow-x: hidden; /* Disable horizontal scroll */
-  transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+.signup-logo{
+    margin-left: 40%;
+}
+.signup-body{
+    width: 522px;
+    height: 58px;
+    position: relative;
+}
+.card-header{
+    font-style: bolder;
+    color: black;
 }
 
-/* Position the content inside the overlay */
-.overlay-content {
-  position: relative;
-  top: 25%; /* 25% from the top */
-  width: 100%; /* 100% width */
-  text-align: center; /* Centered text/links */
-  margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+.signup-next-button{
+    float: right;
+    margin-left: 90%;
+    padding-top: 2px;
 }
 
-/* The navigation links inside the overlay */
-.overlay a {
-  padding: 8px;
-  text-decoration: none;
-  font-size: 36px;
-  color: #818181;
-  display: block; /* Display block instead of inline */
-  transition: 0.3s; /* Transition effects on hover (color) */
+.close {
+	background: #606061;
+	color: #FFFFFF;
+	line-height: 25px;
+	position: absolute;
+	right: -12px;
+	text-align: center;
+	top: -10px;
+	width: 24px;
+	text-decoration: none;
+	font-weight: bold;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	border-radius: 12px;
+	-moz-box-shadow: 1px 1px 3px #000;
+	-webkit-box-shadow: 1px 1px 3px #000;
+	box-shadow: 1px 1px 3px #000;
 }
 
-/* When you mouse over the navigation links, change their color */
-.overlay a:hover, .overlay a:focus {
-  color: #f1f1f1;
-}
-
-/* Position the close button (top right corner) */
-.overlay .closebtn {
-  position: absolute;
-  top: 20px;
-  right: 45px;
-  font-size: 60px;
+.close:hover {
+     background: #00d9ff;
 }
 
 /*timeline*/
 
-.timeline-tweet-button{
-    float: right;
-    background-color: #1da1f2;
-    border: 1px solid #1da1f2;
-    color: #fff;
-    border-radius: 100px;
-    box-shadow: none;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: bold;
-    line-height: 20px;
-    padding: 6px 16px;
-    position: relative;
-    text-align: center;
+div.nav-image {
+    background-image: url("../images/nav.png");
+    height: 46px;
+
 }
 
-.timeline-modal{
-    align-content: center;
-    position: absolute;
-    z-index: 4;
+ul {
+	list-style-type: none;
+    margin-left: 10%;
+    display: block;
+
+
 }
 
+ a {
+ 	color: #03658c;
+ 	text-decoration: none;
+ }
+
+
+
+body {
+	font-family: 'Roboto', Arial, Helvetica, Sans-serif, Verdana;
+	background: #dee1e3;
+}
+
+/** ====================
+ * Lista de Comentarios
+ =======================*/
+.comments-container {
+	margin: 60px auto 15px;
+	width: 768px;
+}
+
+.comments-container h1 {
+	font-size: 36px;
+	color: #283035;
+	font-weight: 400;
+}
+
+.comments-container h1 a {
+	font-size: 18px;
+	font-weight: 700;
+}
+
+.comments-list {
+	margin-top: 30px;
+	position: relative;
+}
+
+/**
+ * Lineas / Detalles
+ -----------------------*/
+.comments-list:before {
+	content: '';
+	width: 2px;
+	height: 100%;
+	background: #c7cacb;
+	position: absolute;
+	left: 32px;
+	top: 0;
+}
+
+.comments-list:after {
+	content: '';
+	position: absolute;
+	background: #c7cacb;
+	bottom: 0;
+	left: 27px;
+	width: 7px;
+	height: 7px;
+	border: 3px solid #dee1e3;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+}
+
+.reply-list:before, .reply-list:after {display: none;}
+.reply-list li:before {
+	content: '';
+	width: 60px;
+	height: 2px;
+	background: #c7cacb;
+	position: absolute;
+	top: 25px;
+	left: -55px;
+}
+
+
+.comments-list li {
+	margin-bottom: 15px;
+	display: block;
+	position: relative;
+}
+
+.comments-list li:after {
+	content: '';
+	display: block;
+	clear: both;
+	height: 0;
+	width: 0;
+}
+
+.reply-list {
+	padding-left: 88px;
+	clear: both;
+	margin-top: 15px;
+}
+/**
+ * Avatar
+ ---------------------------*/
+.comments-list .comment-avatar {
+	width: 65px;
+	height: 65px;
+	position: relative;
+	z-index: 99;
+	float: left;
+	border: 3px solid #FFF;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+	box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+	overflow: hidden;
+}
+
+.comments-list .comment-avatar img {
+	width: 100%;
+	height: 100%;
+}
+
+.reply-list .comment-avatar {
+	width: 50px;
+	height: 50px;
+}
+
+.comment-main-level:after {
+	content: '';
+	width: 0;
+	height: 0;
+	display: block;
+	clear: both;
+}
+/**
+ * Caja del Comentario
+ ---------------------------*/
+.comments-list .comment-box {
+	width: 680px;
+	float: right;
+	position: relative;
+	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+	-moz-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+	box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+}
+
+.comments-list .comment-box:before, .comments-list .comment-box:after {
+	content: '';
+	height: 0;
+	width: 0;
+	position: absolute;
+	display: block;
+	border-width: 10px 12px 10px 0;
+	border-style: solid;
+	border-color: transparent #FCFCFC;
+	top: 8px;
+	left: -11px;
+}
+
+.comments-list .comment-box:before {
+	border-width: 11px 13px 11px 0;
+	border-color: transparent rgba(0,0,0,0.05);
+	left: -12px;
+}
+
+.reply-list .comment-box {
+	width: 610px;
+}
+.comment-box .comment-head {
+	background: #FCFCFC;
+	padding: 10px 12px;
+	border-bottom: 1px solid #E5E5E5;
+	overflow: hidden;
+	-webkit-border-radius: 4px 4px 0 0;
+	-moz-border-radius: 4px 4px 0 0;
+	border-radius: 4px 4px 0 0;
+}
+
+.comment-box .comment-head i {
+	float: right;
+	margin-left: 14px;
+	position: relative;
+	top: 2px;
+	color: #A6A6A6;
+	cursor: pointer;
+	-webkit-transition: color 0.3s ease;
+	-o-transition: color 0.3s ease;
+	transition: color 0.3s ease;
+}
+
+.comment-box .comment-head i:hover {
+	color: #03658c;
+}
+
+.comment-box .comment-name {
+	color: #283035;
+	font-size: 14px;
+	font-weight: 700;
+	float: left;
+	margin-right: 10px;
+}
+
+.comment-box .comment-name a {
+	color: #283035;
+}
+
+.comment-box .comment-head span {
+	float: left;
+	color: #999;
+	font-size: 13px;
+	position: relative;
+	top: 1px;
+}
+
+.comment-box .comment-content {
+	background: #FFF;
+	padding: 12px;
+	font-size: 15px;
+	color: #595959;
+	-webkit-border-radius: 0 0 4px 4px;
+	-moz-border-radius: 0 0 4px 4px;
+	border-radius: 0 0 4px 4px;
+}
+
+.comment-box .comment-name.by-author, .comment-box .comment-name.by-author a {color: #03658c;}
+.comment-box .comment-name.by-author:after {
+	content: 'autor';
+	background: #03658c;
+	color: #FFF;
+	font-size: 12px;
+	padding: 3px 5px;
+	font-weight: 700;
+	margin-left: 10px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
+/** =====================
+ * Responsive
+ ========================*/
+@media only screen and (max-width: 766px) {
+	.comments-container {
+		width: 480px;
+	}
+
+	.comments-list .comment-box {
+		width: 390px;
+	}
+
+	.reply-list .comment-box {
+		width: 320px;
+	}
+}
 
 
 
@@ -306,7 +606,9 @@ footer{
 }
 /* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
 @media screen and (max-height: 450px) {
-  .overlay a {font-size: 20px}
+  .overlay a {
+      font-size: 20px
+  }
   .overlay .closebtn {
     font-size: 40px;
     top: 15px;
