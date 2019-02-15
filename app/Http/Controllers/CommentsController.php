@@ -41,7 +41,7 @@ class CommentsController extends Controller
    //      public function store(Request $request)
    //          {
    //              $comments = new Comment;
-   //              $comments->comment= $request->get('comment_body');
+   //              $comments->comment= $request->get('comment');
    //              $comments->user()->associate($request->user());
    //              $tweets = Tweet::find($request->get('tweet_id'));
    //              $tweets->comments()->save($comment);
@@ -57,5 +57,5 @@ class CommentsController extends Controller
    //                   $tweet->comments()->save($reply);
    //
    //                    return back();
-    
+
 }

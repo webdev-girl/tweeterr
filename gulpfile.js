@@ -8,6 +8,7 @@ gulp.src('resources/scss/*.scss')
 });
 
 gulp.task('watch', function(){
+ 
 gulp.watch('resources/scss/*.scss', ['scss']);
 });
 

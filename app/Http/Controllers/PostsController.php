@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Tweet;
+use App\TweetLike;
 use App\Comment;
 use App\User;
 // use DB;
@@ -28,10 +29,8 @@ class PostsController extends Controller
 //
 
     public function index() {
-        $tweets = Tweet::get();
-        var_dump("$tweets");
-        //return view('timeline', ['tweets' => $tweets]);
-          return view('timeline', compact('tweets'));
+         $tweets = Tweet::get();
+         return view('timeline', compact('tweets'));
     }
 
    //   public function show(){
@@ -53,23 +52,60 @@ class PostsController extends Controller
      //      return redirect('timeline');
      //  }
 
-    public function savetweet(Request $request){
+    public function saveTweet(Request $request){
        $user = Auth::user();
        $tweets = new Tweet;
        $tweets->user_id = $user->id;
        $tweets->tweet = $request->tweet;
-       $tweets->save();
-
-      return view('timeline', compact('tweets'));
+       // $tweets->save();
+       return view('timeline', compact('tweets'));
       }
 
-     // public function postcomment(Request $request){
-     //    $user = Auth::user();
-     //    $comments = new Comment;
-     //    $comments->user_id = $user->id;
-     //    $comments->tweet_id = $request->tweet_id;
-     //    $comments->comment = $request->comment;
-     //    $comments->save();
-     //     return redirect('timeline');
-        //return view('timeline', compact('comments'));
- }
+    public function editTweet(Request $request){
+         $tweets = Tweet::find($request->tweet_id);
+         $tweets->tweet = $request->editTweet;
+         $tweets->save();
+         return view('timeline', compact('tweets'));
+        }
+
+    public function editTweetDisplay($id){
+         $tweets =  Tweet::find($id);
+         // var_dump($tweet);die();
+         return view('edit-tweet', compact('tweets'));
+        }
+
+    public function tweetLike(Request $request){
+           $user = Auth::user();
+           $tweetLikes = new TweetLike;
+           $tweetLikes->user_id = $user->id;
+           $tweetLikes->tweet_id = $request->tweet_id;
+           $tweetLikes->like = $request->like;
+           // $tweetLikes->save();
+           return view('timeline', compact('tweetLikes'));
+
+
+          // if (isset($tweetLikes->like) && ($tweetlikes->like == "1")
+          //   $tweetLikes['like'] = true;
+          }
+
+
+
+       public function deleteTweet(Request $request) {
+        $user = Auth::user();
+        $destroy = Tweet::find($request->tweet_id);
+        If($destroy){
+            Tweet::destroy($request->tweet_id);
+        }
+        return back()->with('success', 'Tweet has been deleted successfully!');
+
+}
+    // public function postComment(Request $request){
+    //     $user = Auth::user();
+    //     $comments = new Comment;
+    //     $comments->user_id = $user->id;
+    //     $comments->post_id = $request->post_id;
+    //     $comments->comment = $request->comment;
+    //     $comments->save();
+    //     return view('timeline', compact('comments'));
+    // }
+}

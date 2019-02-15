@@ -10,11 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('blade', function () {
-   return view('child');
-});
 
- Route::get('/welcome', function () {
+ Route::get('/', function () {
     return view('welcome');
  });
 
@@ -22,17 +19,19 @@ Route::get('blade', function () {
     return view('index');
  });
 
- Route::get('/layout', function () {
-    return view('layout');
+ Route::get('/loginpage', function () {
+    return view('loginpage');
  });
-
  Route::auth();
  Route::get('/home', 'HomeController@index');
 
- Route::get('/timeline', 'PostsController@index');
- Route::post('/timeline', 'PostsController@savetweet');
- //Route::post('/timeline', 'PostsController@postcomment');
- //Route::get('/timeline', 'PostsController@delete');
+Route::get('/feed', 'PostsController@index');
+Route::post('/feed', 'PostsController@saveTweet');
+Route::get('/edit-tweet/{id}', 'PostsController@editTweetDisplay')->name('tweetDisplay');
+Route::post('/edit-tweet', 'PostsController@editTweet')->name('editTweet');
+Route::post('/feed', 'PostsController@tweetLike')->name('tweetLike');
+// Route::post('/feed', 'PostsController@postComment')->name('postComment');
+Route::delete('/feed', 'PostsController@deleteTweet')->name('delete');
 
 
 Route::get('/logout', function () {

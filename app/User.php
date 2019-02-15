@@ -28,12 +28,19 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function tweets(){
+        return $this->hasMany('App\Tweet');
+    }
+
+    public function comments(){
+        return $this->hasMany('App\Comment');
+    }
+
+    public function tweetLikes(){
+        return $this->hasMany('App\tweetLikes');
+    }
 
 
-    // public function comments(){
-    //     return $this->hasMany('App\Comment');
-    // }
-    //
     // public function likes(){
     //     return $this->belongsToMany('App\Tweet', 'likes', 'user_id', 'tweet_id');
     //     }
