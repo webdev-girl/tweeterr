@@ -4,8 +4,8 @@
     <body class="login-bg">
         <div class="login-topnav">
             <ul>
-                <li><a class="login-a" href="/index"><i class="fab fa-twitter"></i>Home</a></li>
-                <li><a class="login-a" href="/about">About</a></li>
+                <li><a class="login" href="/index"><i class="fab fa-twitter"></i>Home</a></li>
+                <li><a class="login" href="/about">About</a></li>
                 <li class="language-select"><select data-placeholder="Choose a Language...">
                 <option value="AF">Language: English</option>
                 <option value="SQ">Albanian</option>
@@ -84,7 +84,7 @@
         </div>
         <div class="container login-background">
             <div class="row">
-                <form method="POST" action="/timeline" id="sign-up">
+                <form method="POST" action="/feed" id="sign-up">
                     <div class="col-sm">
                         <h1>Login to Twitter</h1>
                         </div>
@@ -94,7 +94,7 @@
                     </div>
                     <input type="text" class="form-control" name="lname" placeholder="Password">
                     <br/>
-                    <a href="/timeline" class="submit login-button">Log in</a>
+                    <a href="/feed" class="submit login-button">Log in</a>
                 </form>
             </div>
         </div>

@@ -13,8 +13,8 @@
     <body class="login-bg">
         <div class="login-topnav">
             <ul>
-                <li><a class="login-a" href="/index"><i class="fab fa-twitter"></i>Home</a></li>
-                <li><a class="login-a" href="/about">About</a></li>
+                <li><a class="login" href="/index"><i class="fab fa-twitter"></i>Home</a></li>
+                <li><a class="login" href="/about">About</a></li>
                 <li class="language-select"><select data-placeholder="Choose a Language...">
                 <option value="AF">Language: English</option>
                 <option value="SQ">Albanian</option>
@@ -99,7 +99,7 @@
               @endif
           </ul>
         </div>
-        
+
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
           Sign up
         </button>

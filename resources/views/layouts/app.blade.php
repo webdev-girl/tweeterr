@@ -27,8 +27,8 @@
             <div class="container">
                 <div class="login-topnav">
                     <ul>
-                        <li><a class="login-a" href="/index"><img src="../images/twitterbird.png" width="23px" height="23px">Home</a></li>
-                        <li><a class="login-a" href="/about">About</a></li>
+                        <li><a class="login" href="/index"><img src="../images/twitterbird.png" width="23px" height="23px">Home</a></li>
+                        <li><a class="login" href="/about">About</a></li>
                         <li class="language-select"><select data-placeholder="Choose a Language...">
                         <option value="AF">Language: English</option>
                         <option value="SQ">Albanian</option>
@@ -106,7 +106,7 @@
                   </ul>
                 </div>
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{-- {{config('app.name', 'Laravel')}} --}}
+                     {{config('app.name', 'Laravel')}} 
                 </a>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -124,11 +124,11 @@
                         <!-- Authentication Links -->
                          @guest
                              <li class="nav-item">
-                                   {{-- <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a> --}}
+                                   <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                              @if (Route::has('register'))
                                  <li class="nav-item">
-                                    {{-- <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a> --}}
+                                 <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                  </li>
                              @endif
                         @else

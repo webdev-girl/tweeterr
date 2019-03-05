@@ -12,7 +12,7 @@ class Comment extends Model
 
 
       public function tweets(){
-              return $this->belongsTo('App\Tweet');
+              return $this->belongsToMany('App\Comment');
          }
 
        public function user(){

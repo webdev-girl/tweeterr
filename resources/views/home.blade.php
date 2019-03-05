@@ -15,7 +15,8 @@
                     @endif
 
                     You are logged in!
-                </div>
+                     <a href="/feed"><br/>To continue click here.</a>
+                 </div>
             </div>
         </div>
     </div>

@@ -28,20 +28,12 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function tweets(){
-        return $this->hasMany('App\Tweet');
-    }
-
-    public function comments(){
-        return $this->hasMany('App\Comment');
-    }
-
-    public function tweetLikes(){
-        return $this->hasMany('App\tweetLikes');
-    }
-
-
-    // public function likes(){
-    //     return $this->belongsToMany('App\Tweet', 'likes', 'user_id', 'tweet_id');
-    //     }
-    }
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+}

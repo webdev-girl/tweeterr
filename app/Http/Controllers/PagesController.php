@@ -12,7 +12,6 @@ class PagesController extends Controller
     }
 
 
-
  // //    public function contact(){
  // //        return view('contact');
  // //    }
@@ -20,6 +19,6 @@ class PagesController extends Controller
  // //    public function terms(){
  // //        return view('terms');
  // //    }
- 
+
 
 }
