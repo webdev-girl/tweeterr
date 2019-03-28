@@ -7,8 +7,11 @@
         <title>Laravel</title>
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet"/>
+        <link rel="icon" type="image/x-icon" href="../images/favicon.png">
+        <link rel="stylesheet" type="text/css" href="{{URL::asset('../css/tweeter.css')}}">
         <!-- Styles -->
         <style>
             html, body {
@@ -68,7 +71,7 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        <a href="{{ url('home') }}">Home</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
 
@@ -81,7 +84,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Tweeter
                 </div>
 
                 <div class="links">

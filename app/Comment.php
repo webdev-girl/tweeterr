@@ -11,7 +11,7 @@ class Comment extends Model
 
 
 
-      public function tweets(){
+      public function tweet(){
               return $this->belongsToMany('App\Comment');
          }
 

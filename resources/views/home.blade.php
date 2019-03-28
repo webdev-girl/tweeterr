@@ -15,7 +15,7 @@
                     @endif
 
                     You are logged in!
-                     <a href="/feed"><br/>To continue click here.</a>
+                     <a href="/timeline"><br/>To continue click here.</a>
                  </div>
             </div>
         </div>
