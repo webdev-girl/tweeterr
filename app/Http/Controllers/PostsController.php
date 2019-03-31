@@ -1,14 +1,16 @@
 <?php
-// use App\Http\Requests\PostRequest;
+
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Tweet;
 use App\TweetLike;
-use App\Comment;
 use App\User;
-use App\DB;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Follower;
+use Auth;
+use DB;
+use App\Http\Resources\Tweet as TweetResource;
+use App\Http\Resources\TweetLike as TweetLikeResource;
 
 //use Illuminate\Foundation\Auth\AuthenticatesUsers;
 class PostsController extends Controller
@@ -97,66 +99,92 @@ class PostsController extends Controller
      //  $tweet->save();
      //      return redirect('timeline');
      //  }
-     // this works
-    public function saveTweet(Request $request){
-       $user = Auth::user();
-       $tweet = new Tweet;
-       $tweet->user_id = $user->id;
-       $tweet->tweet = $request->tweet;
-       $tweet->save();
-       return view('timeline', compact('tweets'));
-      }
+     /// /////this works
+         public function saveTweet(Request $request){
+             $user = Auth::user();
+             $tweet = new Tweet;
+             $tweet ->user_id = $user->id;
+             $tweet ->tweet = $request->tweet;
+             $tweet -> save();
+             return redirect('home');
+         }
+     /////////this works
+         public function deleteTweet(Request $request) {
+         $tweet = Tweet::find($request->tweet_id);
+         if($tweet){
+         Tweet::destroy($request->tweet_id);
+         }
+         // return redirect('home');
+            return back()
+                ->with('success','Successfully deleted!!.');
+         }
+     ///// this works
+         public function likeTweet(Request $request){
+             $user = Auth::user();
+             $tweetLike = new TweetLike;
+             $tweetLike ->user_id = $user->id;
+             $tweetLike ->tweet_id = $request->tweet_id;
+             $tweetLike ->like = $request->like;
+             $tweetLike -> save();
+              return redirect('home');
+             }
 
-    public function editTweet(Request $request){
-           $user = Auth::id();
-           $tweet = Tweet::find($request->id);
-           // $tweet = Tweet::find($request->tweet_id);
-           $tweet->tweet = $request->tweet;
-           $tweet->save();
-           return view('timeline', compact('tweets'));
-       }
+         public function delete($id){
+             $user = Auth::user();
+             Comment::where('id', $id)->delete();
+               return redirect('home');
+         }
 
-    public function editTweetDisplay(Request $request){
-          $tweet = Tweet::get();
-
-             // var_dump($tweet);die();
-             return view('edit-tweet', compact('tweets'));
+     ////// this works
+         public function editTweet(Request $request){
+             $tweet = Tweet::find($request->tweet_id);
+             $tweet ->tweet = $request->tweet;
+             $tweet->save();
+              return redirect('home');
+               // var_dump($tweet);die();
         }
+     ////// this works
+         public function editTweetDisplay(Request $request, $id){
+             $tweet = new Tweet;
+             $tweet = Tweet::find($id);
+             return view('edit-tweet', compact('tweet'));
+         }
+     //     public function index(Request $request, Tweet $tweet)
+     // {
+     //     $tweets = $tweet->whereIn($user_id, $request->user();
+     //                     ->pluck('users.id');
+     //                     ->push($request->user()->id));
+     //                     ->with('user');
+     //                     ->orderBy('created_at', 'desc');
+     //                     ->take($request->get('limit', 10;
+     //                     ->get();
+     //
+     //         return response()->json($tweets);
+     //     }
 
+         public function store(Request $request, Post $post)
+         {
+             $newTweet = $request->user()->tweets()->create([
+                 'body' => $request->get('body')
+             ]);
 
-    public function likeTweet(Request $request){
-           $user = Auth::user();
-           $tweetLike = new TweetLike;
-           $tweetLike->user_id = $user->id;
-           $tweetLike->tweet_id = $request->tweet_id;
-           $tweetLike->like = $request->like;
-           // $tweetLikes->save();
-           return view('timeline', compact('tweetLikes'));
+             return response()->json($tweet->with('user')->find($newTweet->id));
+         }
 
-
-          // if (isset($tweetLikes->like) && ($tweetlikes->like == "1")
-          //   $tweetLikes['like'] = true;
-          }
-
-
-          // this works
-     public function deleteTweet(Request $request) {
-        $user = Auth::user();
-        $destroy = Tweet::find($request->tweet_id);
-        If($destroy){
-            Tweet::destroy($request->tweet_id);
+           public function getAllTweets(){
+               $tweets = Tweet::get();
+               return new TweetResource($tweets);
         }
-        return back()->with('success', 'Tweet has been deleted successfully!');
-
- }
-     public function saveComment(Request $request){
-         $user = Auth::user();
-         $comment = new Comment;
-         $comment->user_id = $user->id;
-         $comment->tweet_id = $request->tweet_id;
-         $comment->comment = $request->comment;
-          // $comment-> save();
-          // return redirect('home');
-          return view('timeline', compact('comments'));
-    }
-}
+           public function getAlltweetLikes(){
+               $tweetlikes = TweetLike::get();
+               return new TweetLikeResource($tweetlikes);
+           }
+           public function getTweetByNumber($number){
+               $tweets = Tweet::limit($number)->get();
+               return new TweetResource($tweets);
+           }
+           public function saveTweets($number){
+               $tweets = Tweet::limit($number)->get();
+               return new TweetResource($tweets);
+           }
+     }

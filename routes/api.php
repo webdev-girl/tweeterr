@@ -16,3 +16,10 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/users', 'UsersController@getAllUsers');
+Route::get('/tweets', 'PostsController@getAllTweets');
+Route::get('/comments', 'CommentsController@getAllComments');
+Route::get('/tweetlikes', 'PostsController@getAlltweetLikes');
+Route::get('/tweetsbynumber/{number}', 'PostsController@getTweetsBynumber');
+Route::post('/tweets', 'PostsController@saveTweets');
